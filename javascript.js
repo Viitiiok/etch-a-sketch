@@ -24,8 +24,10 @@ addSquaresBtn.addEventListener('click', () => {
 gridContainer.addEventListener('mouseover', (event) => { 
   if (isErasing) {
     event.target.style.backgroundColor = 'white';
+  } else if (isRandomizing) {
+    event.target.style.backgroundColor = getRandomColor();
   } else {
-    event.target.style.backgroundColor = currentColor;
+  event.target.style.backgroundColor = currentColor
   }
 })
 
@@ -46,4 +48,18 @@ let clearBtn = document.querySelector('#clear');
 clearBtn.addEventListener('click', () => {
   const squares = document.querySelectorAll('.grid-square');
   squares.forEach(square =>  square.style.backgroundColor = 'white');
+})
+
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+let isRandomizing = false
+
+let rgbBtn = document.querySelector('#rgb')
+rgbBtn.addEventListener('click', () => {
+  isRandomizing = !isRandomizing;
 })
