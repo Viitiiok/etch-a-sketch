@@ -1,32 +1,44 @@
-*{
+* {
 box-sizing: border-box;
 padding: 0px;
 margin: 0px;
 }
 
+
 body {
-background-color: grey;
+   background-color: grey;
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   height: 100vh;
+}
+
+.controls {
+   display: flex;
+   flex-direction: column;
+   gap: 24px;
+   align-items: center;
 }
 
 button {
    display: block;
-   margin: 16px auto;
-   padding: 8px 12px;
-   cursor: pointer;
+   padding: 12px;
+}
+
+#colorPicker {
+   height: 120px;
+   width: 120px;
 }
 
 .container {
    display: flex;
    flex-wrap: wrap;
    width: 640px;
-   margin: 24px auto;
+   margin: auto;
    background-color: white;
 }
 
 .grid-square {
-   border: 0px solid black;
-}
-
-.hovered {
-   background-color: aqua;
+   border: 1px solid #e0e0e0;
+   background-color: white;
 }

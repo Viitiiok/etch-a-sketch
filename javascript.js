@@ -22,7 +22,12 @@ btn.addEventListener('click', () => {
 })
 
 gridContainer.addEventListener('mouseover', (event) => { 
-  if (event.target.classList.contains('grid-square')) {
-  event.target.classList.add('hovered')    
-  }
+  event.target.style.backgroundColor = currentColor;
+})
+
+let currentColor = '#800000';
+let colorInput = document.querySelector('input')
+colorInput.addEventListener('input', (event) => {
+  currentColor = event.target.value;
+  event.target.style.backgroundColor = currentColor
 })
