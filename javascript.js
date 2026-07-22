@@ -6,3 +6,8 @@ for (let i = 0; i < size * size; i++) {
   gridContainer.append(divSquare);
 }
 
+gridContainer.addEventListener('mouseover', (event) => { 
+  if (event.target.classList.contains('grid-square')) {
+  event.target.classList.add('hovered')    
+  }
+})
