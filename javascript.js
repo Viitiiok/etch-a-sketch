@@ -14,20 +14,36 @@ function createGrid(size) {
   }
 }
 
-let btn = document.querySelector('button')
-btn.addEventListener('click', () => {
+let addSquaresBtn = document.querySelector('#squares')
+addSquaresBtn.addEventListener('click', () => {
   const gridSize = +prompt('Pick your grid size:')
   if ( gridSize < 1 || gridSize > 100) return alert('error, wayyy overboard')
   createGrid(gridSize)
 })
 
 gridContainer.addEventListener('mouseover', (event) => { 
-  event.target.style.backgroundColor = currentColor;
+  if (isErasing) {
+    event.target.style.backgroundColor = 'white';
+  } else {
+    event.target.style.backgroundColor = currentColor;
+  }
 })
 
 let currentColor = '#800000';
 let colorInput = document.querySelector('input')
 colorInput.addEventListener('input', (event) => {
   currentColor = event.target.value;
-  event.target.style.backgroundColor = currentColor
+  event.target.style.backgroundColor = currentColor;
+})
+
+let isErasing = false;
+let eraseBtn = document.querySelector('#eraser');
+eraseBtn.addEventListener('click', () => {
+  isErasing = !isErasing;
+})
+
+let clearBtn = document.querySelector('#clear');
+clearBtn.addEventListener('click', () => {
+  const squares = document.querySelectorAll('.grid-square');
+  squares.forEach(square =>  square.style.backgroundColor = 'white');
 })
