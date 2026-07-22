@@ -14,11 +14,11 @@ function createGrid(size) {
   }
 }
 
-let addSquaresBtn = document.querySelector('#squares')
-addSquaresBtn.addEventListener('click', () => {
-  const gridSize = +prompt('Pick your grid size:')
-  if ( gridSize < 1 || gridSize > 100) return alert('error, wayyy overboard')
-  createGrid(gridSize)
+let applyBtn = document.querySelector('#applyGrid');
+   applyBtn.addEventListener('click', () => {
+     const gridSize = +gridSlider.value;
+     if (gridSize < 1 || gridSize > 100) return alert('error');
+     createGrid(gridSize);
 })
 
 gridContainer.addEventListener('mouseover', (event) => { 
@@ -27,16 +27,16 @@ gridContainer.addEventListener('mouseover', (event) => {
   } else if (isRandomizing) {
     event.target.style.backgroundColor = getRandomColor();
   } else {
-  event.target.style.backgroundColor = currentColor
+    event.target.style.backgroundColor = currentColor;
   }
 })
 
 let currentColor = '#800000';
-let colorInput = document.querySelector('input')
-colorInput.addEventListener('input', (event) => {
-  currentColor = event.target.value;
-  event.target.style.backgroundColor = currentColor;
-})
+let colorInput = document.querySelector('#colorPicker')
+  colorInput.addEventListener('input', (event) => {
+    currentColor = event.target.value;
+    event.target.style.backgroundColor = currentColor;
+  })
 
 let isErasing = false;
 let eraseBtn = document.querySelector('#eraser');
@@ -62,4 +62,11 @@ let isRandomizing = false
 let rgbBtn = document.querySelector('#rgb')
 rgbBtn.addEventListener('click', () => {
   isRandomizing = !isRandomizing;
+})
+
+let gridSlider = document.querySelector('#gridSlider');
+let sizeDisplay = document.querySelector('#sizeDisplay');
+
+gridSlider.addEventListener('input', (event) => {
+  sizeDisplay.textContent = event.target.value; 
 })
